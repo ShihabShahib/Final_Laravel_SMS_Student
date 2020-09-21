@@ -19,13 +19,13 @@ Lost & Found
                         </tr>
                     </thead>
                     <tbody>
-                        @for($i=0; $i != count($found->result); $i++)
+                        @for($i=0; $i != count($found); $i++)
                         <tr>
-                            <td>{{$found->result[$i]->lostname}}</td>
-                            <td>{{$found->result[$i]->lostdescription}}</td>
-                            <td>{{$found->result[$i]->lostday}}</td>
-                            <td>{{$found->result[$i]->found}}</td>
-                            <td>{{$found->result[$i]->received}}</td>
+                            <td>{{$found[$i]->lostname}}</td>
+                            <td>{{$found[$i]->lostdescription}}</td>
+                            <td>{{$found[$i]->lostday}}</td>
+                            <td>{{$found[$i]->found}}</td>
+                            <td>{{$found[$i]->received}}</td>
                         </tr>
                         @endfor
                     </tbody>

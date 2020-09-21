@@ -62,7 +62,7 @@ doc.save('gradesheet.pdf');
 </div>
 <div id="elementH"></div>
 <button class="btn btn btn-secondary" onclick="pdf();">pdf</button>
-<a href="{{ url('grade_pdf/pdf') }}" class="btn btn-danger">PDF</a>
+
 </div>
 </div>
 </div>

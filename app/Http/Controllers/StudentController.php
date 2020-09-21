@@ -157,6 +157,27 @@ class StudentController extends Controller
         return view('student.assignment')->with('assignment', $assignment)->with('upload', $upload);
     }
 
+    function upload($id,Request $request){
+        $sid = $request->session()->get('userid');
+
+        if($request->hasfile('uploadfile') ){
+            
+            $AssignmentFile =  $request->file('uploadfile');
+            $filename = $AssignmentFile->getClientOriginalName();
+            $date = date("Y-m-d");
+            DB::table('upload')->insert(
+                ['assignment_id' => $id,
+                'uploadfilename' => $filename,
+                'uploaddate' => $date,
+                'student_id' => $sid]);
+            if($AssignmentFile->move('student/file', $AssignmentFile->getClientOriginalName()) ){
+                return redirect()->route('student.assignment');
+            }else{
+                return redirect()->route('student.stdash');
+            }
+        }
+    }
+
 
     function generatepdf(Request $request){
         $id = $request->session()->get('userid');

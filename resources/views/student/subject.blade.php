@@ -20,11 +20,11 @@ Subjects
                         </tr>
                     </thead>
                     <tbody>
-                        @for($i=0; $i != count($subject->result); $i++)
+                        @for($i=0; $i != count($subject); $i++)
                         <tr>
-                            <td>{{$subject->result[$i]->subject_id}}</td>
-                            <td>{{$subject->result[$i]->subjectname}}</td>
-                            <td>{{$subject->result[$i]->teachername}}</td>
+                            <td>{{$subject[$i]->subject_id}}</td>
+                            <td>{{$subject[$i]->subjectname}}</td>
+                            <td>{{$subject[$i]->teachername}}</td>
                         </tr>
                         @endfor
                         

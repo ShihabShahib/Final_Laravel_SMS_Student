@@ -15,6 +15,13 @@ My profile
                     
                     <div class="col-12">
                         <div class="form-group row mb-3">
+                            <label class="col-md-3 col-form-label"> ID</label>
+                            <div class="col-md-9">
+                                <label class="col-md-3 col-form-label" >{{$student->student_id}}</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
                             <label class="col-md-3 col-form-label"> Name</label>
                             <div class="col-md-9">
                                 <label class="col-md-3 col-form-label" >{{$student->studentname}}</label>
@@ -52,7 +59,7 @@ My profile
                         <div class="form-group row mb-3">
                             <label class="col-md-3 col-form-label"> Phone:</label>
                             <div class="col-md-9">
-                                <label class="col-md-6 col-form-label">{{$student->guardiannumber}}</label>
+                                <label class="col-md-6 col-form-label">+880{{$student->guardiannumber}}</label>
                             </div>
                         </div>
 
@@ -138,13 +145,10 @@ My profile
         </div> <!-- end card -->
     </div>
 </div>
-    </div>
 </div>
-
-                    <!-- END PLACE PAGE CONTENT HERE -->
-                </div>
-            </div>
-            <!-- END CONTENT -->
-        </div>
-    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
 @endsection

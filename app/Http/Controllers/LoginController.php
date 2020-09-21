@@ -17,20 +17,6 @@ class LoginController extends Controller
         return view('landing');
     }
 
-    function example(){
-
-        $client = new Client([
-            // Base URI is used with relative requests
-            'base_uri' => 'http://localhost:3333',
-        ]);
-          
-        $response = $client->request('GET', '/student/teachersearch/Bangla');
-         
-        $body = $response->getBody();
-        $arr_body = json_decode($body);
-        print_r($arr_body);
-    }
-
     function varify(Request $request){
         $request->validate([
             'userid'  => 'required|max:10|min:10',
