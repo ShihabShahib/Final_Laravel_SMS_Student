@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Http;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StudentRequests;
 use Illuminate\Support\Facades\DB;
+use App\Teacher;
 
 
 class StudentController extends Controller
@@ -36,6 +36,15 @@ class StudentController extends Controller
                         ->get();
 
         return view('student.teacher')->with('teacher', $teacher);
+    }
+    public function teachersearch(Request $request)
+    {
+        $t = new Teacher();
+        $searchvalue = $t->where('teachername', 'like', '%'.$request->get('teacher').'%')
+                                ->get();
+    
+        return json_encode($searchvalue);
+       
     }
 
     function routine(Request $request){

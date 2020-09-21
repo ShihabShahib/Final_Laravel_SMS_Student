@@ -44,6 +44,30 @@ Teachers
 </div>
 </div>
 </div>
+<script type="text/javascript">
 
+    $('body').on('keyup','#teacher',function(){
+        var teacher = $(this).val();
+        $.ajax({
+            method: 'POST',
+            url: '{{ route("student.search")}}',
+            dataType: 'json',
+            data: {
+                '_token': '{{ csrf_token()}}',
+                teacher: teacher,
+            },
+            success: function(res){
+                var tableRow ='';
 
-    @endsection
+                $('#searchteacher').html('');
+                $.each(res, function(index, value){
+                    tableRow = '<tr><td>'+value.teachername+'</td><td>'+value.teacheremail+'</td><td>'+value.teacherdepartment+'</td><td>'+value.teacherdesignation+'</td></tr>';
+
+                    $('#searchteacher').append(tableRow);
+                });
+            }
+        });
+    });
+
+  </script>
+@endsection

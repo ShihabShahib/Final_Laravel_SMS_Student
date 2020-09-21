@@ -17,13 +17,13 @@ Route::get('/','LoginController@land')->name('landing');
 Route::get('/login','LoginController@index')->name('login');
 Route::post('/login',['uses'=>'LoginController@varify'] );
 Route::get('/logout','LogoutController@index');
-Route::get('/example','LoginController@example');
 
 
 Route::middleware(['sess'])->group(function(){
 	Route::group(['middleware'=>['studenttype']], function(){
 		Route::get('/student/stdash','StudentController@stdash')->name('student.stdash');
 		Route::get('/student/teacher','StudentController@teacher')->name('student.teacher');
+		Route::post('/student/teachersearch', 'studentController@teachersearch')->name('student.search');
 		Route::get('/student/routine','StudentController@routine')->name('student.routine');
 		Route::get('/student/subject','StudentController@subject')->name('student.subject');
 		Route::get('/student/syllabus','StudentController@syllabus')->name('student.syllabus');
