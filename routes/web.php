@@ -25,6 +25,7 @@ Route::middleware(['sess'])->group(function(){
 		Route::get('/student/teacher','StudentController@teacher')->name('student.teacher');
 		Route::post('/student/teachersearch', 'studentController@teachersearch')->name('student.search');
 		Route::get('/student/routine','StudentController@routine')->name('student.routine');
+		Route::get('/student/dynamic_pdf/pdf', 'StudentDynamicPDFController@pdf')->name('studentroutine.pdf');
 		Route::get('/student/subject','StudentController@subject')->name('student.subject');
 		Route::get('/student/syllabus','StudentController@syllabus')->name('student.syllabus');
 		Route::get('/student/notes','StudentController@notes')->name('student.notes');
