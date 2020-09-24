@@ -2,28 +2,8 @@
 
 @section('studentcontent')
 @section('title')
-Gradesheet
+Marksheet
 @endsection
-<script>
-    function pdf(){
-        var doc = new jsPDF();
-var elementHTML = $('#contnet').html();
-var specialElementHandlers = {
-    '#elementH': function (element, renderer) {
-        return true;
-    }
-};
-//doc.fromHTML(elementHTML, 15, 15, {
-    //'width': 170,
-doc.fromHTML(elementHTML, 30, 30, {
-    'width': 1000,
-    'elementHandlers': specialElementHandlers
-});
-
-// Save the PDF
-doc.save('gradesheet.pdf');
-    }
-</script>
 
 
 <div class="row" id="contnet">
@@ -39,8 +19,6 @@ doc.save('gradesheet.pdf');
                             <th>Attendance</th>
                             <th>Mid</th>
                             <th>Final</th>
-                            <th>Total</th>
-                            <th>Grade</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,8 +28,6 @@ doc.save('gradesheet.pdf');
                             <td width="20%">{{$grade[$i]->attendance}}</td>
                             <td width="20%">{{$grade[$i]->midmarks}}</td>
                             <td width="20%">{{$grade[$i]->finalmarks}}</td>
-                            <td width="20%">{{$grade[$i]->total}}</td>
-                            <td width="20%">{{$grade[$i]->finalgrade}}</td>
                         </tr>
                         @endfor
                     </tbody>
@@ -61,8 +37,8 @@ doc.save('gradesheet.pdf');
     </div>
 </div>
 <div id="elementH"></div>
-<button class="btn btn btn-secondary" onclick="pdf();">pdf</button>
-
+<a href="{{route('studentmark.pdf')}}" class="btn btn btn-secondary">Marksheet</a>
+<a href="{{route('studentgrade.pdf')}}" class="btn btn btn-secondary">Grade</a>
 </div>
 </div>
 </div>

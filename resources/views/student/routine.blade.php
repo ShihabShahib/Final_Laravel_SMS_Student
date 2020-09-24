@@ -83,7 +83,6 @@ Class Routine
 		</div>
 	</div>
 </div>
-<a href="{{route('studentroutine.pdf')}}" class="btn btn btn-secondary">PDF</a>
 </div>
 </div>
 </div>

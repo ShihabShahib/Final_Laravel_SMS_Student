@@ -34,7 +34,7 @@ Assignment
                             <td><a class="btn btn btn-secondary" href="{{asset('/student/file')}}/{{$assignment[$i]->directory}}" download><i class="fa fa-download" style="width:50%"></i> Download</a></td>
                             <td width="15%">{{$assignment[$i]->date}}</td>
                             <td width="15%">{{$assignment[$i]->duedate}}</td>
-                            <td width="10%"><input class="btn btn btn-secondary" type="file" name="uploadfile"/><br><br><input class="btn btn btn-secondary" type="submit" value="Upload"/></td>
+                            <td width="10%"><input class="btn btn btn-secondary" type="file" name="uploadfile"/><br><br><input class="btn btn btn-secondary" type="submit" value="Upload"/>(File size must be less than 4 MB)</td>
                         </tr>
                     </form>
                     @endfor
@@ -60,18 +60,20 @@ Assignment
                             <th>Teacher's Uploaded File</th>
                             <th>Upload Date</th>
                             <th>Duedate</th>
+                            <th>Filename</th>
                             <th>Student's Uploaded file</th>
                         </tr>
                     </thead>
                     <tbody>
                         @for($i=0; $i != count($upload); $i++)  
                         <tr>
-                            <td width="20%">{{$upload[$i]->subjectname}}</td>
-                            <td width="20%">{{$upload[$i]->teachername}}</td>
-                            <td width="20%">{{$upload[$i]->filename}}</td>
+                            <td width="15%">{{$upload[$i]->subjectname}}</td>
+                            <td width="15%">{{$upload[$i]->teachername}}</td>
+                            <td width="15%">{{$upload[$i]->filename}}</td>
                             <td><a class="btn btn btn-secondary" href="{{asset('/student/file')}}/{{$upload[$i]->directory}}" download><i class="fa fa-download" style="width:50%"></i> Download</a></td> 
                             <td width="15%">{{$upload[$i]->uploaddate}}</td>
                             <td width="15%">{{$upload[$i]->duedate}}</td>
+                            <td width="15%">{{$upload[$i]->uploadfilename}}</td>
                             <td><a class="btn btn btn-secondary" href="{{asset('/student/file')}}/{{$upload[$i]->uploadfilename}}" download><i class="fa fa-download" style="width:50%"></i> Download</a></td>
                         </tr>
                         @endfor 

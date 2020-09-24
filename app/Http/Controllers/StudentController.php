@@ -168,12 +168,16 @@ class StudentController extends Controller
 
     function upload($id,Request $request){
         $sid = $request->session()->get('userid');
+        
+        $request->validate([
+            'uploadfile' => 'required|max:4096',
+        ]);
 
         if($request->hasfile('uploadfile') ){
             
             $AssignmentFile =  $request->file('uploadfile');
             $filename = $AssignmentFile->getClientOriginalName();
-            $date = date("Y-m-d");
+            $date = date('Y-m-d H:i:s');
             DB::table('upload')->insert(
                 ['assignment_id' => $id,
                 'uploadfilename' => $filename,
@@ -194,14 +198,10 @@ class StudentController extends Controller
         $section = $request->session()->get('section');
 
         $grade = DB::table('result')
-                        ->join('grade', 'result.subject_id', '=', 'grade.subject_id')
                         ->join('subject', 'result.subject_id', '=', 'subject.subject_id')
                         ->where('result.class_id', $class)
                         ->where('result.section_id', $section)
                         ->where('result.student_id', $id)
-                        ->where('grade.class_id', $class)
-                        ->where('grade.section_id', $section)
-                        ->where('grade.student_id', $id)
                         ->get();
         return view('student.generatepdf')->with('grade', $grade);
     }
