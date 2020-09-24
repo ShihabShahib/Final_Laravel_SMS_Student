@@ -10,8 +10,10 @@ Assignment
     <div class="col-12">
         <div class="card">
             <div class="card-body teacher_content">
+            <div class="alert-secondary">{{ $errors->first('uploadfile') }}</div>
                 <div class="items">
                 <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
+                
                     <thead>
                         <tr style="background-color: #313a46; color: #ababab;">
                             <th>Subject</th>
