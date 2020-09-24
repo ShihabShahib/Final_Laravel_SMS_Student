@@ -83,22 +83,22 @@ class StudentGradePdfController extends Controller
         foreach($grade_data as $grade)
         {
             $total=$grade->midmarks+$grade->attendance+$grade->finalmarks;
-            if($total>160){
+            if($total>159){
                 $subjectgrade="A+";
             }
-            elseif($total>140){
+            elseif($total>139){
                 $subjectgrade="A";
             }
-            elseif($total>120){
+            elseif($total>119){
                 $subjectgrade="B+";
             }
-            elseif($total>100){
+            elseif($total>99){
                 $subjectgrade="B";
             }
-            elseif($total>80){
+            elseif($total>79){
                 $subjectgrade="C+";
             }
-            elseif($total>60){
+            elseif($total>59){
                 $subjectgrade="C";
             }
             else{

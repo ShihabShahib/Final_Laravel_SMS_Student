@@ -31,7 +31,6 @@ Route::middleware(['sess'])->group(function(){
 		Route::get('/student/assignment','StudentController@assignment')->name('student.assignment');
 		Route::post('/student/upload/{id}', 'StudentController@upload');
 		Route::get('/student/generatepdf','StudentController@generatepdf')->name('student.generatepdf');
-		
 		Route::get('/student/mark_pdf/pdf', 'StudentGradePdfController@markpdf')->name('studentmark.pdf');
 		Route::get('/student/grade_pdf/pdf', 'StudentGradePdfController@gradepdf')->name('studentgrade.pdf');
 		Route::get('/student/found','StudentController@found')->name('student.found');
