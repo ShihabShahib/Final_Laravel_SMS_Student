@@ -16,11 +16,11 @@ Assignment
                         <tr style="background-color: #313a46; color: #ababab;">
                             <th>Subject</th>
                             <th>Teacher Name</th>
-                            <th>Assignment</th>
-                            <th>File</th>
+                            <th>Assignment Title</th>
+                            <th>File uploaded by teacher</th>
                             <th>Date</th>
                             <th>Duedate</th>
-                            <th>Upload</th>
+                            <th>Upload your assignment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,7 +48,7 @@ Assignment
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <h3>Uploaded Assignments</h3>
+            <h3>Your Uploaded Assignments</h3>
             <div class="card-body teacher_content">
                 <div class="items">
                 <table id="basic-datatable" class="table table-striped dt-responsive nowrap" width="100%">
@@ -56,11 +56,11 @@ Assignment
                         <tr style="background-color: #313a46; color: #ababab;">
                             <th>Subject</th>
                             <th>Teacher Name</th>
-                            <th>Assignment</th>
-                            <th>File</th>
+                            <th>Given Assignment</th>
+                            <th>Teacher's Uploaded File</th>
                             <th>Upload Date</th>
                             <th>Duedate</th>
-                            <th>Upload</th>
+                            <th>Student's Uploaded file</th>
                         </tr>
                     </thead>
                     <tbody>

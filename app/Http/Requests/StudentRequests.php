@@ -28,7 +28,7 @@ class StudentRequests extends FormRequest
             'email'      => 'required|email:rfc,dns',
             'mothername' => 'required|regex:/^[a-zA-Z\s\.]*$/',
             'fathername' => 'required|regex:/^[a-zA-Z\s\.]*$/',
-            'phone'      => 'required | numeric | digits:10 | starts_with:14,15,16,17,18,19',
+            'phone'      => 'required | numeric | digits:10 | starts_with:13,14,15,16,17,18,19',
             'address'    => 'required'
         ];
     }
@@ -44,7 +44,7 @@ class StudentRequests extends FormRequest
             'mothername.required' => 'Field is required',
             'mothername.regex' => 'Name must be Letters(can use space and dot)',
             'phone.required' => 'Field is required',
-            'phone.starts_with' => 'Must be starts with 14/15/16/17/18/19',
+            'phone.starts_with' => 'Must be starts with 13/14/15/16/17/18/19',
             'address.required' => 'Field is required',
 
         ];

@@ -17,9 +17,7 @@ class VerifySession
     {
         if($request->session()->has('userid')){
             return $next($request);
-        }
-        if($request->session()->has('parentid')){
-            return $next($request);
+        
         }else{
             return redirect()->route('login');
         }

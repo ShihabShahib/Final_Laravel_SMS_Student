@@ -18,6 +18,13 @@ Manage Profile
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="col-12">
                         <div class="form-group row mb-3">
+                            <label class="col-md-3 col-form-label" for="">Student ID </label>
+                            <div class="col-md-9">
+                                <input type="text" id="" name="" class="form-control"  value="{{$student->student_id}}" readonly>
+                                <!-- <div class="alert-secondary">{{ $errors->first('name') }}</div> -->
+                            </div>
+                        </div>
+                        <div class="form-group row mb-3">
                             <label class="col-md-3 col-form-label" for="name"> Name</label>
                             <div class="col-md-9">
                                 <input type="text" id="name" name="name" class="form-control"  value="{{$student->studentname}}" >
