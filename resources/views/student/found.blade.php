@@ -59,7 +59,7 @@ Lost & Found
                 lostfound: lostfound,
             },
             success: function(res){
-                //var tableRow ='';
+                var tableRow ='';
                 $('#lostfound').html('');
                 $.each(res, function(index, value){
                     tableRow = '<tr><td>'+value.lostname+'</td><td>'+value.lostdescription+'</td><td>'+value.lostday+'</td><td>'+value.found+'</td><td>'+value.received+'</td></tr>';

@@ -21,7 +21,7 @@
                         <li class="active"><a href="{{route('landing')}}">Home</a></li>
                         <li><a href="{{route('login')}}">login <span class="caret"></span></a></li>
                         <li><a href="#about">about</a></li>
-                        <li><a href="/example">example</a></li>
+                        
                         <li><a href="#contact">contact</a></li>
                     </ul>
                     </div>
