@@ -30,10 +30,11 @@ Route::middleware(['sess'])->group(function(){
 		Route::get('/student/notes','StudentController@notes')->name('student.notes');
 		Route::get('/student/assignment','StudentController@assignment')->name('student.assignment');
 		Route::post('/student/upload/{id}', 'StudentController@upload');
-		Route::get('/student/generatepdf','StudentController@generatepdf')->name('student.generatepdf');
+		Route::get('/student/grade','StudentController@grade')->name('student.grade');
 		Route::get('/student/mark_pdf/pdf', 'StudentGradePdfController@markpdf')->name('studentmark.pdf');
 		Route::get('/student/grade_pdf/pdf', 'StudentGradePdfController@gradepdf')->name('studentgrade.pdf');
 		Route::get('/student/found','StudentController@found')->name('student.found');
+		Route::post('/student/lostfound/search', 'studentController@lostfoundsearch')->name('student.lostfoundsearch');
 		Route::get('/student/stprofile','StudentController@stprofile')->name('student.stprofile');
 		Route::get('/student/updateprofile','StudentController@updateprofile')->name('student.updateprofile');
 		Route::post('/student/updateprofile',['uses'=>'StudentController@saveprofile'] );

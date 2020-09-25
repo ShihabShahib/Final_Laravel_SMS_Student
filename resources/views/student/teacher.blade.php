@@ -58,13 +58,13 @@ Teachers
             },
             success: function(res){
                 var tableRow ='';
-
                 $('#searchteacher').html('');
                 $.each(res, function(index, value){
                     tableRow = '<tr><td>'+value.teachername+'</td><td>'+value.teacheremail+'</td><td>'+value.teacherdepartment+'</td><td>'+value.teacherdesignation+'</td></tr>';
 
                     $('#searchteacher').append(tableRow);
                 });
+
             }
         });
     });

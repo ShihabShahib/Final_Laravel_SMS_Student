@@ -87,7 +87,7 @@
             
             <span>Assignments</span></a>
         </li>
-        <li class="side-nav-item"><a href="{{route('student.generatepdf')}}" class="side-nav-link">
+        <li class="side-nav-item"><a href="{{route('student.grade')}}" class="side-nav-link">
             <span>Grades</span></a>
         </li>
         <li class="side-nav-item"><a href="{{route('student.found')}}" class="side-nav-link">

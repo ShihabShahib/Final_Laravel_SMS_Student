@@ -46,6 +46,30 @@ Lost & Found
 </div>
 </div>
 </div>
+<script type="text/javascript">
 
+    $('body').on('keyup','#lost',function(){
+        var lostfound = $(this).val();
+        $.ajax({
+            method: 'POST',
+            url: '{{ route("student.lostfoundsearch")}}',
+            dataType: 'json',
+            data: {
+                '_token': '{{ csrf_token()}}',
+                lostfound: lostfound,
+            },
+            success: function(res){
+                //var tableRow ='';
+                $('#lostfound').html('');
+                $.each(res, function(index, value){
+                    tableRow = '<tr><td>'+value.lostname+'</td><td>'+value.lostdescription+'</td><td>'+value.lostday+'</td><td>'+value.found+'</td><td>'+value.received+'</td></tr>';
+
+                    $('#lostfound').append(tableRow);
+                });
+            }
+        });
+    });
+
+</script>
 
 @endsection

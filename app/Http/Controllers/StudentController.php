@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StudentRequests;
 use Illuminate\Support\Facades\DB;
 use App\Teacher;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
 
 
 class StudentController extends Controller
@@ -39,11 +41,19 @@ class StudentController extends Controller
     }
     public function teachersearch(Request $request)
     {
-        $t = new Teacher();
+        /*$t = new Teacher();
         $searchvalue = $t->where('teachername', 'like', '%'.$request->get('teacher').'%')
                                 ->get();
     
-        return json_encode($searchvalue);
+        return json_encode($searchvalue);*/
+        $teacher=$request->get('teacher');
+        $client = new Client(['base_uri' => 'http://localhost:3333']);
+        
+        $response = $client->request('GET', '/student/teacher/search/'.$teacher);
+        //http://localhost:3333/student/teacher/search/Bangla
+        $body = $response->getBody();
+        $searchvalue = json_decode($body);
+        return json_encode($searchvalue->result);
        
     }
 
@@ -192,7 +202,7 @@ class StudentController extends Controller
     }
 
 
-    function generatepdf(Request $request){
+    function grade(Request $request){
         $id = $request->session()->get('userid');
         $class = $request->session()->get('class');
         $section = $request->session()->get('section');
@@ -203,7 +213,7 @@ class StudentController extends Controller
                         ->where('result.section_id', $section)
                         ->where('result.student_id', $id)
                         ->get();
-        return view('student.generatepdf')->with('grade', $grade);
+        return view('student.grade')->with('grade', $grade);
     }
 
     function found(){
@@ -211,6 +221,18 @@ class StudentController extends Controller
         $found= DB::table('lostfound')->get();
          
         return view('student.found')->with('found', $found);
+    }
+
+    public function lostfoundsearch(Request $request)
+    {
+        $lostfound=$request->get('lostfound');
+        $client = new Client(['base_uri' => 'http://localhost:3333']);
+        
+        $response = $client->request('GET', '/student/lostfound/search/'.$lostfound);
+        //http://localhost:3333/student/lostfound/search/value
+        $body = $response->getBody();
+        $searchvalue = json_decode($body);
+        return json_encode($searchvalue->result);
     }
 
     function stprofile(Request $request){
