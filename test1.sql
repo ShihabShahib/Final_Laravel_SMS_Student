@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2020 at 06:45 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.12
+-- Generation Time: Sep 25, 2020 at 01:36 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sms`
+-- Database: `test1`
 --
 
 -- --------------------------------------------------------
@@ -29,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `access` (
-  `type` varchar(50) NOT NULL,
-  `status` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `type` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -40,15 +39,15 @@ CREATE TABLE `access` (
 --
 
 CREATE TABLE `assignment` (
-  `assignment_id` int(20) NOT NULL,
-  `filename` varchar(50) NOT NULL,
-  `directory` varchar(50) NOT NULL,
-  `date` varchar(50) NOT NULL,
-  `duedate` varchar(50) NOT NULL,
-  `class_id` int(20) NOT NULL,
-  `section_id` int(20) NOT NULL,
-  `subject_id` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `assignment_id` int(11) NOT NULL,
+  `filename` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `directory` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `duedate` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `section_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `assignment`
@@ -65,9 +64,9 @@ INSERT INTO `assignment` (`assignment_id`, `filename`, `directory`, `date`, `due
 --
 
 CREATE TABLE `class` (
-  `class_id` int(20) NOT NULL,
-  `classname` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `class_id` int(11) NOT NULL,
+  `classname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `class`
@@ -83,12 +82,12 @@ INSERT INTO `class` (`class_id`, `classname`) VALUES
 --
 
 CREATE TABLE `consult` (
-  `consult_id` int(20) NOT NULL,
-  `teacher_id` int(20) NOT NULL,
+  `consult_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
   `consultday` date NOT NULL,
   `consultstarting` time NOT NULL,
   `consultending` time NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -97,11 +96,11 @@ CREATE TABLE `consult` (
 --
 
 CREATE TABLE `event` (
-  `id` int(10) NOT NULL,
-  `title` varchar(30) NOT NULL,
-  `starting` varchar(20) NOT NULL,
-  `ending` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `title` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `starting` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ending` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `event`
@@ -120,13 +119,13 @@ INSERT INTO `event` (`id`, `title`, `starting`, `ending`) VALUES
 --
 
 CREATE TABLE `grade` (
-  `grade_id` int(20) NOT NULL,
-  `student_id` varchar(20) NOT NULL,
-  `subject_id` int(20) NOT NULL,
-  `class_id` int(20) NOT NULL,
-  `finalgrade` varchar(50) NOT NULL,
-  `section_id` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `grade_id` int(11) NOT NULL,
+  `student_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `finalgrade` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `section_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `grade`
@@ -146,11 +145,11 @@ INSERT INTO `grade` (`grade_id`, `student_id`, `subject_id`, `class_id`, `finalg
 --
 
 CREATE TABLE `login` (
-  `id` int(20) NOT NULL,
-  `user_id` varchar(50) NOT NULL,
-  `userpassword` varchar(100) NOT NULL,
-  `usertype` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` int(11) NOT NULL,
+  `user_id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `userpassword` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `usertype` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `login`
@@ -183,20 +182,30 @@ INSERT INTO `login` (`id`, `user_id`, `userpassword`, `usertype`) VALUES
 --
 
 CREATE TABLE `lostfound` (
-  `lostfound_id` int(20) NOT NULL,
-  `lostname` varchar(50) NOT NULL,
-  `lostdescription` varchar(50) NOT NULL,
+  `lostfound_id` int(11) NOT NULL,
+  `lostname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lostdescription` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lostday` date NOT NULL,
-  `found` varchar(50) NOT NULL,
-  `received` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `found` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `received` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `lostfound`
 --
 
 INSERT INTO `lostfound` (`lostfound_id`, `lostname`, `lostdescription`, `lostday`, `found`, `received`) VALUES
-(10, 'Pencil Box', 'Blue color box with two pencils', '2020-07-02', 'not', 'not');
+(1, 'Water Bottle', 'White color bottle', '2020-09-01', 'yes', 'not'),
+(2, 'Pencil Box', 'Blue color box with two pencils', '2020-07-02', 'not', 'not'),
+(3, 'Water Bottle', 'Blue color water bottle', '2020-06-11', 'yes', 'not'),
+(4, 'Umbrella', 'White color umbrella', '2020-07-11', 'yes', 'not'),
+(5, 'TiffinBox', 'Red small tiffin box', '2020-05-11', 'yes', 'not'),
+(6, 'Notebook', 'English Notebook _class four', '2020-06-11', 'yes', 'not'),
+(7, 'Watch', 'black color watch', '2020-06-11', 'yes', 'not'),
+(10, 'Water Bottle', 'White color bottle', '2020-09-01', 'yes', 'not'),
+(11, 'pencil bag', 'White color pencilbag', '2020-09-01', 'yes', 'not'),
+(12, 'Sweater', 'White color ', '2020-09-01', 'yes', 'not'),
+(13, 'calculator', '991-ES Scientific calculator', '2020-09-01', 'yes', 'not');
 
 -- --------------------------------------------------------
 
@@ -215,32 +224,33 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2020_09_15_210058_create_access_table', 0),
-(2, '2020_09_15_210058_create_assignment_table', 0),
-(3, '2020_09_15_210058_create_class_table', 0),
-(4, '2020_09_15_210058_create_consult_table', 0),
-(5, '2020_09_15_210058_create_event_table', 0),
-(6, '2020_09_15_210058_create_grade_table', 0),
-(7, '2020_09_15_210058_create_login_table', 0),
-(8, '2020_09_15_210058_create_lostfound_table', 0),
-(9, '2020_09_15_210058_create_note_table', 0),
-(10, '2020_09_15_210058_create_notice_table', 0),
-(11, '2020_09_15_210058_create_noticeboard_table', 0),
-(12, '2020_09_15_210058_create_parent_table', 0),
-(13, '2020_09_15_210058_create_result_table', 0),
-(14, '2020_09_15_210058_create_routine_table', 0),
-(15, '2020_09_15_210058_create_schooladmin_table', 0),
-(16, '2020_09_15_210058_create_section_table', 0),
-(17, '2020_09_15_210058_create_staff_table', 0),
-(18, '2020_09_15_210058_create_student_table', 0),
-(19, '2020_09_15_210058_create_studentt_table', 0),
-(20, '2020_09_15_210058_create_subject_table', 0),
-(21, '2020_09_15_210058_create_subjectt_table', 0),
-(22, '2020_09_15_210058_create_superadmin_table', 0),
-(23, '2020_09_15_210058_create_syllabus_table', 0),
-(24, '2020_09_15_210058_create_teacher_table', 0),
-(25, '2020_09_15_210058_create_teacherr_table', 0),
-(26, '2020_09_15_210058_create_upload_table', 0);
+(1, '2020_09_25_080712_create_access_table', 1),
+(2, '2020_09_25_080712_create_assignment_table', 1),
+(3, '2020_09_25_080712_create_class_table', 1),
+(4, '2020_09_25_080712_create_consult_table', 1),
+(5, '2020_09_25_080712_create_event_table', 1),
+(6, '2020_09_25_080712_create_grade_table', 1),
+(7, '2020_09_25_080712_create_login_table', 1),
+(8, '2020_09_25_080712_create_lostfound_table', 1),
+(9, '2020_09_25_080712_create_note_table', 1),
+(10, '2020_09_25_080712_create_notice_table', 1),
+(11, '2020_09_25_080712_create_noticeboard_table', 1),
+(12, '2020_09_25_080712_create_parent_table', 1),
+(13, '2020_09_25_080712_create_parentupload_table', 1),
+(14, '2020_09_25_080712_create_result_table', 1),
+(15, '2020_09_25_080712_create_routine_table', 1),
+(16, '2020_09_25_080712_create_schooladmin_table', 1),
+(17, '2020_09_25_080712_create_section_table', 1),
+(18, '2020_09_25_080712_create_staff_table', 1),
+(19, '2020_09_25_080712_create_student_table', 1),
+(20, '2020_09_25_080712_create_studentt_table', 1),
+(21, '2020_09_25_080712_create_subject_table', 1),
+(22, '2020_09_25_080712_create_subjectt_table', 1),
+(23, '2020_09_25_080712_create_superadmin_table', 1),
+(24, '2020_09_25_080712_create_syllabus_table', 1),
+(25, '2020_09_25_080712_create_teacher_table', 1),
+(26, '2020_09_25_080712_create_teacherr_table', 1),
+(27, '2020_09_25_080712_create_upload_table', 1);
 
 -- --------------------------------------------------------
 
@@ -249,14 +259,14 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `note` (
-  `note_id` int(20) NOT NULL,
-  `filename` varchar(50) NOT NULL,
-  `directory` varchar(50) NOT NULL,
+  `note_id` int(11) NOT NULL,
+  `filename` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `directory` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date` date NOT NULL,
-  `subject_id` int(20) NOT NULL,
-  `section_id` int(20) NOT NULL,
-  `class_id` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `subject_id` int(11) NOT NULL,
+  `section_id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `note`
@@ -273,13 +283,13 @@ INSERT INTO `note` (`note_id`, `filename`, `directory`, `date`, `subject_id`, `s
 --
 
 CREATE TABLE `notice` (
-  `notice_id` int(20) NOT NULL,
+  `notice_id` int(11) NOT NULL,
   `noticedate` datetime NOT NULL,
-  `class_id` int(20) NOT NULL,
-  `subject_id` int(20) NOT NULL,
-  `section_id` int(20) NOT NULL,
-  `description` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `class_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `section_id` int(11) NOT NULL,
+  `description` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `notice`
@@ -298,11 +308,11 @@ INSERT INTO `notice` (`notice_id`, `noticedate`, `class_id`, `subject_id`, `sect
 
 CREATE TABLE `noticeboard` (
   `id` int(11) NOT NULL,
-  `nTitle` varchar(50) NOT NULL,
-  `nDetails` varchar(10000) NOT NULL,
-  `pBy` varchar(50) NOT NULL,
-  `Date` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `nTitle` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nDetails` varchar(10000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pBy` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Date` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `noticeboard`
@@ -320,20 +330,44 @@ INSERT INTO `noticeboard` (`id`, `nTitle`, `nDetails`, `pBy`, `Date`) VALUES
 
 CREATE TABLE `parent` (
   `id` int(11) NOT NULL,
-  `parent_id` varchar(50) NOT NULL,
-  `student_id` varchar(50) NOT NULL,
-  `parentname` varchar(50) NOT NULL,
-  `parentemail` varchar(50) NOT NULL,
+  `parent_id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `student_id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `parentname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `parentemail` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `parentphone` bigint(20) NOT NULL,
-  `parentrelation` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `parentrelation` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `parent`
 --
 
 INSERT INTO `parent` (`id`, `parent_id`, `student_id`, `parentname`, `parentemail`, `parentphone`, `parentrelation`) VALUES
-(1, '20-8101-05', '20-8101-04', 'Mr.Rahman', 'MrRahman@gmail.com', 98534896522, 'Father');
+(1, '20-8101-05', '20-8101-04', 'Mr. Rahman', 'MrRahman@gmail.com', 1414412345, 'Father');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `parentupload`
+--
+
+CREATE TABLE `parentupload` (
+  `parentupload_id` int(11) NOT NULL,
+  `teacher_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uploadfiledirectory` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `parentuploaddate` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `student_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `parentupload`
+--
+
+INSERT INTO `parentupload` (`parentupload_id`, `teacher_id`, `uploadfiledirectory`, `parentuploaddate`, `student_id`) VALUES
+(1, '20-8101-03', 'Laravel-DBORM.txt', '2020-09-20', '20-8101-04'),
+(2, '20-8101-03', 'Laravel-DBRunning-Raw-SQL-Queries.txt', '2020-09-20', '20-8101-04'),
+(3, '20-8102-03', 'Abominable (2019) 1080p BluRay _ Circle Network.mp4_snapshot_00.00.45.462.jpg', '2020-09-20', '20-8101-04'),
+(4, '20-8105-03', 'Abominable (2019) 1080p BluRay _ Circle Network.mp4_snapshot_00.34.02.428.jpg', '2020-09-20', '20-8101-04');
 
 -- --------------------------------------------------------
 
@@ -343,15 +377,15 @@ INSERT INTO `parent` (`id`, `parent_id`, `student_id`, `parentname`, `parentemai
 
 CREATE TABLE `result` (
   `result_id` int(11) NOT NULL,
-  `class_id` int(20) NOT NULL,
+  `class_id` int(11) NOT NULL,
   `section_id` int(11) NOT NULL,
   `attendance` int(11) NOT NULL,
   `midmarks` int(11) NOT NULL,
   `finalmarks` int(11) NOT NULL,
   `total` int(11) NOT NULL,
-  `subject_id` int(20) NOT NULL,
-  `student_id` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `subject_id` int(11) NOT NULL,
+  `student_id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `result`
@@ -359,7 +393,11 @@ CREATE TABLE `result` (
 
 INSERT INTO `result` (`result_id`, `class_id`, `section_id`, `attendance`, `midmarks`, `finalmarks`, `total`, `subject_id`, `student_id`) VALUES
 (8801, 8, 1, 30, 80, 80, 190, 83, '20-8101-04'),
-(8802, 8, 1, 30, 60, 60, 150, 89, '20-8101-04');
+(8802, 8, 1, 30, 60, 60, 150, 89, '20-8101-04'),
+(8003, 8, 1, 20, 50, 80, 150, 81, '20-8101-04'),
+(8004, 8, 1, 30, 55, 90, 175, 82, '20-8101-04'),
+(8005, 8, 1, 30, 58, 85, 173, 86, '20-8101-04'),
+(8006, 8, 1, 20, 35, 50, 105, 84, '20-8101-04');
 
 -- --------------------------------------------------------
 
@@ -368,18 +406,18 @@ INSERT INTO `result` (`result_id`, `class_id`, `section_id`, `attendance`, `midm
 --
 
 CREATE TABLE `routine` (
-  `routine_id` int(20) NOT NULL,
-  `class_id` int(20) NOT NULL,
-  `section_id` int(20) NOT NULL,
-  `teacher_id` varchar(20) NOT NULL,
+  `routine_id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `section_id` int(11) NOT NULL,
+  `teacher_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `startingtime` time NOT NULL,
   `endingtime` time NOT NULL,
-  `day` varchar(50) NOT NULL,
-  `subject_id` int(20) NOT NULL,
-  `teachername` varchar(50) NOT NULL,
-  `sectionname` varchar(50) NOT NULL,
-  `subjectname` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `day` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `teachername` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sectionname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subjectname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `routine`
@@ -419,10 +457,10 @@ INSERT INTO `routine` (`routine_id`, `class_id`, `section_id`, `teacher_id`, `st
 
 CREATE TABLE `schooladmin` (
   `id` int(11) NOT NULL,
-  `schooladmin_id` varchar(50) NOT NULL,
-  `schooladminname` varchar(50) NOT NULL,
-  `schooladminemail` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `schooladmin_id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `schooladminname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `schooladminemail` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `schooladmin`
@@ -442,12 +480,12 @@ INSERT INTO `schooladmin` (`id`, `schooladmin_id`, `schooladminname`, `schooladm
 --
 
 CREATE TABLE `section` (
-  `section_id` int(20) NOT NULL,
-  `class_id` int(20) NOT NULL,
-  `sectionname` varchar(50) NOT NULL,
-  `classteacher` varchar(50) NOT NULL,
-  `subject_id` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `section_id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `sectionname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `classteacher` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `section`
@@ -465,18 +503,18 @@ INSERT INTO `section` (`section_id`, `class_id`, `sectionname`, `classteacher`, 
 
 CREATE TABLE `staff` (
   `id` int(11) NOT NULL,
-  `staff_id` varchar(50) NOT NULL,
-  `staffname` varchar(50) NOT NULL,
-  `staffphone` int(20) NOT NULL,
-  `stafffathername` varchar(50) NOT NULL,
-  `staffmothername` varchar(50) NOT NULL,
-  `staffaddress` varchar(250) NOT NULL,
-  `staffdob` varchar(50) NOT NULL,
-  `staffphoto` varchar(50) NOT NULL,
-  `staffgender` varchar(50) NOT NULL,
-  `staffreligion` varchar(50) NOT NULL,
+  `staff_id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `staffname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `staffphone` int(11) NOT NULL,
+  `stafffathername` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `staffmothername` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `staffaddress` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `staffdob` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `staffphoto` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `staffgender` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `staffreligion` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `staffjoiningdate` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -485,35 +523,35 @@ CREATE TABLE `staff` (
 --
 
 CREATE TABLE `student` (
-  `id` int(20) NOT NULL,
-  `student_id` varchar(50) NOT NULL,
-  `class_id` int(20) NOT NULL,
-  `section_id` int(20) NOT NULL,
-  `studentname` varchar(50) NOT NULL,
-  `studentemail` varchar(50) NOT NULL,
-  `studentaddress` varchar(250) NOT NULL,
-  `studentimage` varchar(50) NOT NULL,
-  `studentbloodgroup` varchar(50) NOT NULL,
-  `studentfathername` varchar(50) NOT NULL,
-  `studentmothername` varchar(50) NOT NULL,
+  `id` int(11) NOT NULL,
+  `student_id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `section_id` int(11) NOT NULL,
+  `studentname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `studentemail` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `studentaddress` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `studentimage` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `studentbloodgroup` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `studentfathername` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `studentmothername` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `guardiannumber` bigint(20) NOT NULL,
-  `admissionclass` varchar(50) NOT NULL,
-  `studentdob` varchar(50) NOT NULL,
-  `studentgender` varchar(10) NOT NULL,
-  `studentreligion` varchar(50) NOT NULL,
+  `admissionclass` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `studentdob` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `studentgender` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `studentreligion` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `admissiondate` date NOT NULL,
-  `disorder` varchar(50) NOT NULL,
-  `allergic` varchar(50) NOT NULL,
-  `heartproblem` varchar(50) NOT NULL,
-  `otherdisease` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `disorder` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `allergic` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `heartproblem` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `otherdisease` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `student`
 --
 
 INSERT INTO `student` (`id`, `student_id`, `class_id`, `section_id`, `studentname`, `studentemail`, `studentaddress`, `studentimage`, `studentbloodgroup`, `studentfathername`, `studentmothername`, `guardiannumber`, `admissionclass`, `studentdob`, `studentgender`, `studentreligion`, `admissiondate`, `disorder`, `allergic`, `heartproblem`, `otherdisease`) VALUES
-(1, '20-8101-04', 8, 1, 'student8101', 'studen8101@gmail.com', '58/2 A, Mirpur,Dhaka', 'student.jpg', 'B+', 'Mr. Rahman', 'Mrs. Rahman', 801935245598, 'One', '5/08/2004', 'Male', 'Muslim', '2012-01-01', 'No', 'No', 'No', 'No');
+(1, '20-8101-04', 8, 1, 'Student', 'studen8101@gmail.com', '58/2 A, Mirpur,Dhaka', 'student.jpg', 'B+', 'Mr. Rahman', 'Mrs. Rahman', 1456328975, 'One', '5/08/2004', 'Male', 'Muslim', '2012-01-01', 'No', 'No', 'No', 'No');
 
 -- --------------------------------------------------------
 
@@ -522,23 +560,23 @@ INSERT INTO `student` (`id`, `student_id`, `class_id`, `section_id`, `studentnam
 --
 
 CREATE TABLE `studentt` (
-  `id` int(20) NOT NULL,
-  `sName` varchar(50) NOT NULL,
-  `sid` varchar(20) NOT NULL,
-  `fName` varchar(50) NOT NULL,
-  `mName` varchar(50) NOT NULL,
-  `gender` varchar(20) NOT NULL,
-  `dob` varchar(50) NOT NULL,
-  `admissionDate` varchar(50) NOT NULL,
-  `bGroup` varchar(20) NOT NULL,
-  `religion` varchar(50) NOT NULL,
-  `eMail` varchar(50) NOT NULL,
-  `admissionClass` varchar(50) NOT NULL,
-  `section` varchar(50) NOT NULL,
-  `gPN` varchar(50) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `myImage` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` int(11) NOT NULL,
+  `sName` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sid` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fName` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mName` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dob` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admissionDate` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bGroup` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `religion` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `eMail` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admissionClass` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `section` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gPN` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `myImage` text COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `studentt`
@@ -555,10 +593,10 @@ INSERT INTO `studentt` (`id`, `sName`, `sid`, `fName`, `mName`, `gender`, `dob`,
 --
 
 CREATE TABLE `subject` (
-  `subject_id` int(20) NOT NULL,
-  `subjectname` varchar(50) NOT NULL,
-  `class_id` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `subject_id` int(11) NOT NULL,
+  `subjectname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `class_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `subject`
@@ -574,7 +612,10 @@ INSERT INTO `subject` (`subject_id`, `subjectname`, `class_id`) VALUES
 (87, 'ICT', 8),
 (88, 'World Knowledge', 8),
 (89, 'Home Economics', 8),
-(80, 'Agriculture', 8);
+(80, 'Agriculture', 8),
+(91, 'Art', 9),
+(92, 'PT', 9),
+(93, 'Sociology', 9);
 
 -- --------------------------------------------------------
 
@@ -584,11 +625,11 @@ INSERT INTO `subject` (`subject_id`, `subjectname`, `class_id`) VALUES
 
 CREATE TABLE `subjectt` (
   `id` int(11) NOT NULL,
-  `sName` varchar(50) NOT NULL,
-  `sCode` varchar(50) NOT NULL,
-  `sType` varchar(50) NOT NULL,
-  `sClass` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `sName` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sCode` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sType` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sClass` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `subjectt`
@@ -612,10 +653,10 @@ INSERT INTO `subjectt` (`id`, `sName`, `sCode`, `sType`, `sClass`) VALUES
 
 CREATE TABLE `superadmin` (
   `id` int(11) NOT NULL,
-  `superadmin_id` varchar(50) NOT NULL,
-  `superadminname` varchar(50) NOT NULL,
-  `superadminemail` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `superadmin_id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `superadminname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `superadminemail` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `superadmin`
@@ -631,13 +672,13 @@ INSERT INTO `superadmin` (`id`, `superadmin_id`, `superadminname`, `superadminem
 --
 
 CREATE TABLE `syllabus` (
-  `syllabus_id` int(20) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `directory` varchar(100) NOT NULL,
-  `subject_id` int(20) NOT NULL,
-  `section_id` int(20) NOT NULL,
-  `class_id` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `syllabus_id` int(11) NOT NULL,
+  `title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `directory` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `section_id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `syllabus`
@@ -654,20 +695,20 @@ INSERT INTO `syllabus` (`syllabus_id`, `title`, `directory`, `subject_id`, `sect
 
 CREATE TABLE `teacher` (
   `id` int(11) NOT NULL,
-  `teacher_id` varchar(50) NOT NULL,
-  `teachername` varchar(50) NOT NULL,
-  `teacheremail` varchar(50) NOT NULL,
-  `teacherdesignation` varchar(50) NOT NULL,
-  `teacherdepartment` varchar(50) NOT NULL,
-  `teacheraddress` varchar(50) NOT NULL,
-  `teacherdob` varchar(50) NOT NULL,
-  `teachergender` varchar(10) NOT NULL,
-  `teacherreligion` varchar(50) NOT NULL,
+  `teacher_id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `teachername` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `teacheremail` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `teacherdesignation` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `teacherdepartment` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `teacheraddress` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `teacherdob` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `teachergender` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `teacherreligion` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `teacherjoiningdate` date NOT NULL,
-  `teacherfathername` varchar(50) NOT NULL,
-  `teachermothername` varchar(50) NOT NULL,
+  `teacherfathername` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `teachermothername` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `subject_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `teacher`
@@ -683,7 +724,10 @@ INSERT INTO `teacher` (`id`, `teacher_id`, `teachername`, `teacheremail`, `teach
 (7, '20-8107-03', 'Mr. Teacher ICT', 'teacherICT@gmail.com', 'Lecturer', 'ICT', '98/2,Dhanmondi. 32 Dhaka-1209', '5/2/1986', 'Male', 'Muslim', '2010-01-01', 'Mr. Islam', 'Mrs. Islam', 87),
 (8, '20-8108-03', 'Mr. Teacher World Knowledge', 'teacherWK@gmail.com', 'Lecturer', 'World Knowledge', '98/2,Dhanmondi. 32 Dhaka-1209', '5/2/1986', 'Male', 'Muslim', '2010-01-01', 'Mr. Khan', 'Mrs. Khan', 88),
 (9, '20-8109-03', 'Teacher Home Economics', 'teacherHE@gmail.com', 'Lecturer', 'Home Economics', '98/2,Dhanmondi. 32 Dhaka-1209', '5/2/1986', 'Female', 'Muslim', '2010-01-01', 'Mr. Rahman', 'Mrs. Rahman', 89),
-(10, '20-8100-03', 'Mr. Teacher Agriculture', 'teacherA@gmail.com', 'Lecturer', 'Agriculture', '98/2,Dhanmondi. 32 Dhaka-1209', '5/2/1986', 'Male', 'Muslim', '2010-01-01', 'Mr. Alam', 'Mrs. Alam', 80);
+(10, '20-8100-03', 'Mr. Teacher Agriculture', 'teacherA@gmail.com', 'Lecturer', 'Agriculture', '98/2,Dhanmondi. 32 Dhaka-1209', '5/2/1986', 'Male', 'Muslim', '2010-01-01', 'Mr. Alam', 'Mrs. Alam', 80),
+(11, '20-9001-5', 'Mahbub Reza', 'reza@gmail.com', 'senior lecturer', 'Art', 'kodomtola,Dhaka', '1985-01-01', 'Male', 'Islam', '2019-02-07', 'Mr. Jahangir', 'Ms. Amena', 91),
+(12, '20-9002-03', 'Mahbub redowan', 'redowan@gmail.com', 'junior lecturer', 'PT', 'kodomtola,Dhaka', '1985-01-01', 'Male', 'Islam', '2019-02-07', 'Mr. Alamgir', 'Ms. Fatema', 92),
+(13, '20-9003-03', 'Redowan', 'red@gmail.com', 'junior lecturer', 'Sociology', 'kodomtola,Dhaka', '1985-01-01', 'Male', 'Islam', '2019-02-07', 'Mr. Alamin', 'Ms. khaleda', 93);
 
 -- --------------------------------------------------------
 
@@ -693,15 +737,15 @@ INSERT INTO `teacher` (`id`, `teacher_id`, `teachername`, `teacheremail`, `teach
 
 CREATE TABLE `teacherr` (
   `id` int(11) NOT NULL,
-  `tid` varchar(50) NOT NULL,
-  `tName` varchar(50) NOT NULL,
-  `gender` varchar(50) NOT NULL,
-  `dob` varchar(50) NOT NULL,
-  `department` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `phone` varchar(50) NOT NULL,
-  `address` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `tid` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tName` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dob` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `department` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `teacherr`
@@ -718,12 +762,12 @@ INSERT INTO `teacherr` (`id`, `tid`, `tName`, `gender`, `dob`, `department`, `em
 --
 
 CREATE TABLE `upload` (
-  `upload_id` int(20) NOT NULL,
-  `assignment_id` int(20) NOT NULL,
-  `uploadfilename` varchar(50) NOT NULL,
-  `uploaddate` varchar(50) NOT NULL,
-  `student_id` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `upload_id` int(11) NOT NULL,
+  `assignment_id` int(11) NOT NULL,
+  `uploadfilename` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uploaddate` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `student_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `upload`
@@ -732,7 +776,9 @@ CREATE TABLE `upload` (
 INSERT INTO `upload` (`upload_id`, `assignment_id`, `uploadfilename`, `uploaddate`, `student_id`) VALUES
 (1, 8002, '2dfe9cc400d3d74b6ca254230b9d71af.png', '2020-08-18 20:48:45', '20-8101-04'),
 (2, 8001, '1783da03d8e21ca6ebc26b42a7450f4c.jpg', '2020-08-19 02:02:09', '20-8101-04'),
-(20, 8001, 'Laravel-DBRunning-Raw-SQL-Queries.txt', '2020-09-16', '20-8101-04');
+(20, 8001, 'Laravel-DBRunning-Raw-SQL-Queries.txt', '2020-09-16', '20-8101-04'),
+(21, 8001, 'Laravel-DBRunning-Raw-SQL-Queries.txt', '2020-09-20', '20-8101-04'),
+(22, 8002, 'critical literaturereview vs literature review.txt', '2020-09-25 07:35:25', '20-8101-04');
 
 --
 -- Indexes for dumped tables
@@ -767,6 +813,12 @@ ALTER TABLE `noticeboard`
 --
 ALTER TABLE `parent`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `parentupload`
+--
+ALTER TABLE `parentupload`
+  ADD PRIMARY KEY (`parentupload_id`);
 
 --
 -- Indexes for table `schooladmin`
@@ -830,19 +882,19 @@ ALTER TABLE `upload`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `noticeboard`
@@ -855,6 +907,12 @@ ALTER TABLE `noticeboard`
 --
 ALTER TABLE `parent`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `parentupload`
+--
+ALTER TABLE `parentupload`
+  MODIFY `parentupload_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `schooladmin`
@@ -872,13 +930,13 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `studentt`
 --
 ALTER TABLE `studentt`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `subjectt`
@@ -896,7 +954,7 @@ ALTER TABLE `superadmin`
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `teacherr`
@@ -908,7 +966,7 @@ ALTER TABLE `teacherr`
 -- AUTO_INCREMENT for table `upload`
 --
 ALTER TABLE `upload`
-  MODIFY `upload_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `upload_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
