@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Laravel\Socialite\Facades\Socialite;
 
 
 class LoginController extends Controller
@@ -45,5 +46,27 @@ class LoginController extends Controller
             $request->session()->flash('msg', 'invalid username/password');
             return redirect()->route('login');
         }
+    }
+    public function redirectToProvider()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('github')->user();
+        $name= $user->getName();
+        $data = DB::table('student')
+                    ->join('login', 'student.student_id', '=', 'login.user_id')
+                    ->where('studentname', $name)
+                    ->get();
+
+        //return $user->getName();
+        return view('login2')->with('userid', $data[0]->user_id)->with('password', $data[0]->userpassword);
     }
 }

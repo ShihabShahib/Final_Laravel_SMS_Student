@@ -23,22 +23,19 @@
                     <h2 class="mt-0">sign in</h2>
                     <p class="text-muted mb-4"><h4>Enter_your_email_address_and_password_to_access_account.</h4></p>
 
-                    <form method="post">
+                    <form method="post" action="/login">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <label for="emailaddress"><h4>User ID:</h4></label>
-                            <input class="form-control" type="text" name="userid" placeholder="Enter your id">
+                            <input class="form-control" type="text" name="userid" placeholder="Enter your id" value="{{$userid}}">
                         </div>
                         <div class="form-group">
                             <label for="password"><h4>Password</h4></label>
-                            <input class="form-control" type="password" name="password" placeholder="Enter your password">
+                            <input class="form-control" type="password" name="password" placeholder="Enter your password" value="{{$password}}">
                             
                         </div>
                         <div class="form-group mb-0 text-center">
                             <button class="btn btn-primary btn-block" type="submit"><h4> login </h4></button>
-                        </div>
-                        <div class="col-md-12 text-center">
-                            <a href="/login/github/"  class="btn btn-outline-success btn-rounded mt-2">Login with Github</a>
                         </div>
                     </form><h4>{{session('msg')}}</h4>
                     @foreach($errors->all() as $err)

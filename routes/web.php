@@ -18,6 +18,9 @@ Route::get('/login','LoginController@index')->name('login');
 Route::post('/login',['uses'=>'LoginController@varify'] );
 Route::get('/logout','LogoutController@index');
 
+Route::get('login/github', 'LoginController@redirectToProvider');
+Route::get('login/github/callback', 'LoginController@handleProviderCallback');
+
 
 Route::middleware(['sess'])->group(function(){
 	Route::group(['middleware'=>['studenttype']], function(){
